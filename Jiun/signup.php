@@ -21,7 +21,7 @@
       </div>
       <div class="form-group m-1">
         <label for="">Phone Number</label>
-        <input class="form-control" name="phone" placeholder="Phone">
+        <input class="form-control" name="phone" placeholder="04...">
       </div>
       <div class="form-group m-1">
         <label for="">Emergency Name</label>

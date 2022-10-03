@@ -16,7 +16,6 @@
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" name="pwd" placeholder="Password">
       </div>
-      <a class="m-1" href="">Forgot Password</a>
       <div class="text-center">
         <button type="submit" class="btn btn-primary mt-3 w-25" name="submit">Login</button>
       </div>

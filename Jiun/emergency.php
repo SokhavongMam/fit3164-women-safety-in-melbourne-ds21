@@ -1,4 +1,21 @@
 <?php
+session_start();
+require 'includes/dbh.inc.php';
+$usersuid = $_SESSION['usersuid'];
+
+
+$select = mysqli_query($conn, "SELECT * FROM users WHERE usersUid = '$usersuid'") or die('query failed');
+if (mysqli_num_rows($select) > 0){
+    $fetch = mysqli_fetch_assoc($select);
+}
+
+$name = $fetch['usersFullname'];
+$phone = $fetch['usersNumber'];
+$ename = $fetch['emergencyName'];
+$ephone = $fetch['emergencyNumber'];
+
+require_once 'includes/dbh.inc.php';
+
 // Include the bundled autoload from the Twilio PHP Helper Library
 require __DIR__ . '/twilio-php-main/src/Twilio/autoload.php';
 use Twilio\Rest\Client;
@@ -12,10 +29,12 @@ $twilio_number = "+13866149400";
 $client = new Client($account_sid, $auth_token);
 $client->messages->create(
     // Where to send a text message (your cell phone?)
-    '+61424032466',
+    '+61460026125',
     array(
         'from' => $twilio_number,
-        'body' => 'I sent this message in under 10 minutes!'
+        'body' => "Emergency! from $name,$phone to $ename"
     )
 );
+
+header("location: index.php");
 ?>
